@@ -25,7 +25,7 @@ namespace rm
 
             bool remove(const K& key);
 
-            void clear(){resource.clear();};
+            void clear();
 
             inline T& operator[](const K& key){return resource[key];};
 

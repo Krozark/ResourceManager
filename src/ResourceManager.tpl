@@ -1,3 +1,5 @@
+#include <type_traits>
+
 namespace rm
 {
     template<class K,class T>
@@ -49,4 +51,17 @@ namespace rm
         }
         return false;
     };
+
+    template<class K,class T>
+    void ResourceManager<K,T>::clear()
+    {
+        if(std::is_pointer<T>::value)
+        {
+            for(auto& x:resource)
+                delete x.second;
+        }
+        resource.clear();
+    };
+
+
 };
