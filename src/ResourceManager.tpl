@@ -43,6 +43,48 @@ namespace rm
     template<class K,class T>
     bool ResourceManager<K,T>::remove(const K& key)
     {
+        return do_remove(key,std::is_pointer<T>());
+    };
+
+    template<class K,class T>
+    void ResourceManager<K,T>::clear()
+    {
+        do_clear(std::is_pointer<T>());
+    };
+
+
+    /*********** SPECIALISATIONS *************/
+
+    template<class K, class T>
+    void ResourceManager<K, T>::do_clear(std::integral_constant<bool, true>)
+    {
+        for(auto& x:resource)
+        delete x.second;
+        resource.clear();
+    };
+
+    template<class K, class T>
+    void ResourceManager<K, T>::do_clear(std::integral_constant<bool, false>)
+    {
+        resource.clear();
+    };
+
+    template<class K, class T>
+    bool ResourceManager<K,T>::do_remove(const K& key,std::integral_constant<bool, true>)
+    {
+        auto got = resource.find(key);
+        if(got != resource.end())
+        {
+            delete got.second;
+            resource.erase(got);
+            return true;
+        }
+        return false;
+    }
+
+    template<class K, class T>
+    bool ResourceManager<K,T>::do_remove(const K& key,std::integral_constant<bool, false>)
+    {
         auto got = resource.find(key);
         if(got != resource.end())
         {
@@ -52,24 +94,5 @@ namespace rm
         return false;
     };
 
-    template<class K,class T>
-    void ResourceManager<K,T>::clear()
-    {
-        do_clear(std::is_pointer<T>());
-    };
-
-    template<class K, class T>
-    void ResourceManager<K, T>::do_clear(std::integral_constant<bool, true>)
-    {
-        for(auto& x:resource)
-        delete x.second;
-        resource.clear();
-    }
-
-    template<class K, class T>
-    void ResourceManager<K, T>::do_clear(std::integral_constant<bool, false>)
-    {
-        resource.clear();
-    }
 
 };

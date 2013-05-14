@@ -35,8 +35,9 @@ namespace rm
             void do_clear(std::integral_constant<bool, true>);
             void do_clear(std::integral_constant<bool, false>);
 
-            /*template <bool b>
-            void clear();*/
+            bool do_remove(const K& key,std::integral_constant<bool, true>);
+            bool do_remove(const K& key,std::integral_constant<bool, false>);
+
     };
 };
 
