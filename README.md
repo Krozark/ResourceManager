@@ -15,7 +15,7 @@ Fonction
 --------
 
 * T& add(const K& key,T&& obj)
-* T& add(const K& key,T&& obj)
+* T& add(const K& key,const T& obj)
 * T& add(const K& key,const Args& ... args)
 * bool remove(const K& key)
 * void clear()
