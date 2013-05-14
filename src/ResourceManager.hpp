@@ -23,15 +23,13 @@ namespace rm
 
         bool remove(const K& key);
 
-        void clear();
+        void clear(){resource.clear();};
 
-        T& operator[](const K&);
+        inline T& operator[](const K&){return resource[k];};
 
         private : 
-        std::unordered_map<K,T*> resource;
-
+        std::unordered_map<K,T> resource;
     };
-
 };
 
 #include "ResourceManager.tpl"
