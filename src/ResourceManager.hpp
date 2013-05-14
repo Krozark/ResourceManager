@@ -31,6 +31,12 @@ namespace rm
 
         private : 
             std::unordered_map<K,T> resource;
+
+            void do_clear(std::integral_constant<bool, true>);
+            void do_clear(std::integral_constant<bool, false>);
+
+            /*template <bool b>
+            void clear();*/
     };
 };
 

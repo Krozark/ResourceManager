@@ -55,13 +55,21 @@ namespace rm
     template<class K,class T>
     void ResourceManager<K,T>::clear()
     {
-        if(std::is_pointer<T>::value)
-        {
-            for(auto& x:resource)
-                delete x.second;
-        }
-        resource.clear();
+        do_clear(std::is_pointer<T>());
     };
 
+    template<class K, class T>
+    void ResourceManager<K, T>::do_clear(std::integral_constant<bool, true>)
+    {
+        for(auto& x:resource)
+        delete x.second;
+        resource.clear();
+    }
+
+    template<class K, class T>
+    void ResourceManager<K, T>::do_clear(std::integral_constant<bool, false>)
+    {
+        resource.clear();
+    }
 
 };
