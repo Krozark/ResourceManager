@@ -10,6 +10,8 @@ Class
 * K is type of key
 * T is type of resource
 
+if T if pointer, auto delet are make.
+
 
 Fonction
 --------
