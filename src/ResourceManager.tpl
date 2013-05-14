@@ -75,7 +75,7 @@ namespace rm
         auto got = resource.find(key);
         if(got != resource.end())
         {
-            delete got.second;
+            delete got->second;
             resource.erase(got);
             return true;
         }
