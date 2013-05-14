@@ -25,7 +25,7 @@ namespace rm
 
         void clear(){resource.clear();};
 
-        inline T& operator[](const K&){return resource[k];};
+        inline T& operator[](const K& key){return resource[key];};
 
         private : 
         std::unordered_map<K,T> resource;
