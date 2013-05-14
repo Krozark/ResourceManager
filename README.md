@@ -6,7 +6,7 @@ A  resource manager (usefull in game engine).
 Class
 -----
 
-* rm::ResourceManager<K,T> Rmanager;
+* rm::ResourceManager\<K,T\> Rmanager;
 * K is type of key
 * T is type of resource
 
