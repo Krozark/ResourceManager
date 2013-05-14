@@ -2,33 +2,35 @@
 #define RESOURCEMANAGER_HPP
 
 #include <unordered_map>
+#include <utility>
 
 namespace rm
 {
     template<class K,class T>
     class ResourceManager
     {
-        ResourceManager();
-        ~ResourceManager();
+        public:
+            ResourceManager();
+            ~ResourceManager();
 
-        ResourceManager(const ResourceManager&) = delete;
-        ResourceManager& operator=(const ResourceManager) = delete;
+            ResourceManager(const ResourceManager&) = delete;
+            ResourceManager& operator=(const ResourceManager) = delete;
 
-        T& add(const K& key,const T* obj);
+            T& add(const K& key,T&& obj);
 
-        T& add(const K& key,const T& obj);
+            T& add(const K& key,const T& obj);
 
-        template <Args ...>
-        T& add(const K& key,const Args& ... args);
+            template <typename ... Args>
+            T& add(const K& key,const Args& ... args);
 
-        bool remove(const K& key);
+            bool remove(const K& key);
 
-        void clear(){resource.clear();};
+            void clear(){resource.clear();};
 
-        inline T& operator[](const K& key){return resource[key];};
+            inline T& operator[](const K& key){return resource[key];};
 
         private : 
-        std::unordered_map<K,T> resource;
+            std::unordered_map<K,T> resource;
     };
 };
 

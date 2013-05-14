@@ -13,21 +13,23 @@ namespace rm
 
 
     template<class K,class T>
-    T& ResourceManager<K,T>::add(const K& key,const T* obj)
+    T& ResourceManager<K,T>::add(const K& key,T&& obj)
     {
-        resource.insert(std::make_pair<K,T>(key,*obj));
+        std::pair<K,T> p(key,obj);
+        resource.insert(p);
         return resource[key];
     };
 
     template<class K,class T>
     T& ResourceManager<K,T>::add(const K& key,const T& obj)
     {
-        resource.insert(std::make_pair<K,T>(key,obj));
+        std::pair<K,T> p(key,obj);
+        resource.insert(p);
         return resource[key];
     };
 
     template<class K,class T>
-    template <Args ...>
+    template <typename ... Args>
     T& ResourceManager<K,T>::add(const K& key,const Args& ... args)
     {
         auto got = resource.find(key);
