@@ -47,6 +47,13 @@ namespace rm
     };
 
     template<class K,class T>
+    bool ResourceManager<K,T>::find(const K& key) const
+    {
+        return resource.find(key) != resource.end();
+    }
+
+
+    template<class K,class T>
     void ResourceManager<K,T>::clear()
     {
         do_clear(std::is_pointer<T>());
