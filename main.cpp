@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "src/ResourceManager.hpp"
+#include "ResourceManager/ResourceManager.hpp"
 
 int main(int argc,char* argv[])
 {

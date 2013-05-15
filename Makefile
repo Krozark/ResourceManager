@@ -15,7 +15,7 @@ all: $(EXEC)
 .c.o :
 	$(CC) $(FLAGS) -o $@ -c $^;
 
-$(EXEC) : main.cpp src/ResourceManager.hpp
+$(EXEC) : main.cpp ResourceManager/ResourceManager.hpp
 	$(CC) $(FLAGS) -o $@  $^;
 
 clean: 
