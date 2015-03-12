@@ -1,4 +1,4 @@
-Deprecated. Use https://github.com/Krozark/SFML-utils istead
+Deprecated. Use https://github.com/Krozark/SFML-utils instead
 
 
 ResourceManager
