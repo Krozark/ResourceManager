@@ -1,3 +1,6 @@
+Deprecated. Use https://github.com/Krozark/SFML-utils istead
+
+
 ResourceManager
 ===============
 
